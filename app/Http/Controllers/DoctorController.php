@@ -105,4 +105,19 @@ class DoctorController extends Controller
 
         return response($doctor, 201);
     }
+
+    /**
+     * Delete a doctor by id.
+     *
+     * @param $id
+     * @return Response
+     */
+    public function delete(int $id): Response
+    {
+        $doctor = Doctor::findOrFail($id);
+
+        $doctor->delete();
+
+        return response('Doctor deleted', 200);
+    }
 }

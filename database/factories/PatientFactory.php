@@ -20,6 +20,7 @@ class PatientFactory extends Factory
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'gender' => $this->faker->randomElement(['man', 'woman']),
+            'age' => $this->faker->numberBetween(1, 100),
             'diagnostic' => $this->faker->sentence(),
             'coordinates' => $this->faker->latitude() . ',' . $this->faker->longitude(),
         ];

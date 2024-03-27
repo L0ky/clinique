@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('gender');
+            $table->integer('age');
             $table->string('diagnostic');
             $table->string('coordinates')->nullable();
             $table->timestamps();

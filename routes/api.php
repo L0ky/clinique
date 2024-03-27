@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('doctors')->group(function () {
+    Route::get('/',        [DoctorController::class, 'index']);
+    Route::get('/{id}',    [DoctorController::class, 'show']);
+    Route::post('/',       [DoctorController::class, 'store']);
+    Route::post('/{id}',   [DoctorController::class, 'update']);
+    Route::delete('/{id}', [DoctorController::class, 'delete']);
+});
 
-Route::get('/doctors', [DoctorController::class, 'index']);
-Route::get('/doctors/{id}', [DoctorController::class, 'show']);
-Route::post('/doctors', [DoctorController::class, 'store']);
-Route::post('/doctors/{id}', [DoctorController::class, 'update']);
+Route::prefix('patients')->group(function () {
+    Route::get('/',        [PatientController::class, 'index']);
+    Route::get('/{id}',    [PatientController::class, 'show']);
+    Route::post('/',       [PatientController::class, 'store']);
+    Route::post('/{id}',   [PatientController::class, 'updateDiagnosis']);
+    Route::delete('/{id}', [PatientController::class, 'delete']);
+});
