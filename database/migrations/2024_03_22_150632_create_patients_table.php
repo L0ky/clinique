@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('doctor_id')->constrained();
+            $table->foreignId('disease_id')->constrained();
+            $table->foreignId('room_id')->constrained();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('gender');

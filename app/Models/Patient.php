@@ -17,4 +17,20 @@ class Patient extends Model
         'diagnostic',
         'coordinates',
     ];
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function diseases()
+    {
+        return $this->belongsToMany(Disease::class);
+    }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
+
 }

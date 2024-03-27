@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Disease;
+use App\Models\Doctor;
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +20,9 @@ class PatientFactory extends Factory
     public function definition(): array
     {
         return [
+            'doctor_id' => Doctor::all()->random()->id,
+            'room_id' => Room::all()->random()->id,
+            'disease_id' => Disease::all()->random()->id,
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'gender' => $this->faker->randomElement(['man', 'woman']),

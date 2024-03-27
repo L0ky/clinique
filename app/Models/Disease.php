@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Disease extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'category',
+        'severity',
+    ];
+
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class);
+    }
 }

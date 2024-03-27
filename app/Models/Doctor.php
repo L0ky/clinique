@@ -15,4 +15,9 @@ class Doctor extends Model
         'speciality',
         'coordinates',
     ];
+
+    public function patients()
+    {
+        return $this->hasMany(Patient::class);
+    }
 }

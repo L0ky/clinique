@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Http\Request;
@@ -34,4 +35,12 @@ Route::prefix('patients')->group(function () {
     Route::post('/',       [PatientController::class, 'store']);
     Route::post('/{id}',   [PatientController::class, 'updateDiagnosis']);
     Route::delete('/{id}', [PatientController::class, 'delete']);
+});
+
+Route::prefix('diseases')->group(function () {
+    Route::get('/',        [DiseaseController::class, 'index']);
+    Route::get('/{id}',    [DiseaseController::class, 'show']);
+    Route::post('/',       [DiseaseController::class, 'store']);
+    Route::post('/{id}',   [DiseaseController::class, 'assign']);
+    Route::delete('/{id}', [DiseaseController::class, 'delete']);
 });
